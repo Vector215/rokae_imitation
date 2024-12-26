@@ -1,3 +1,7 @@
+.vscode
+
+xCoreSDK*
+dh_gripper_ros
 build
 
 __pycache__/

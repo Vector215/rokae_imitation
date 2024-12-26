@@ -17,7 +17,7 @@ std::atomic<bool> terminate_program(false);
 
 const float dt = 0.1;
 const float max_speed = 5000;
-const int force_percent = 25;
+const int force_percent = 20;
 const int speed_percent = 100;   
 
 const int max_position = 1000;

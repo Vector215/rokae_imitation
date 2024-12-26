@@ -5,8 +5,10 @@ project(rokae_imitation)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(XCORESDK_PATH "/path/to/xCoreSDK-v0.4.1.b")
-set(DH_PATH "/path/to/dh_gripper_ros")
+set(WORKSPACE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+set(XCORESDK_PATH "${WORKSPACE_PATH}/xCoreSDK-v0.4.1.b")
+set(DH_PATH "${WORKSPACE_PATH}/dh_gripper_ros")
 
 add_library(Rokae STATIC IMPORTED)
 add_library(xmatemodel_lib STATIC IMPORTED)
@@ -44,6 +46,8 @@ include_directories(
 
 add_executable(gripper_control src/gripper_control.cpp ${DH_SOURCE_FILES})
 add_executable(arm_control src/arm_control.cpp)
+add_executable(all_control src/all_control.cpp ${DH_SOURCE_FILES})
 
 target_link_libraries(gripper_control zmq)
 target_link_libraries(arm_control zmq Rokae Threads::Threads)
+target_link_libraries(all_control zmq Rokae Threads::Threads)
